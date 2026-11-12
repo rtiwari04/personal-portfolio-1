@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Rakesh Indramani Tiwari — B.Tech CSE (AI & DS) student, web developer and technology enthusiast.">
+  <meta name="theme-color" content="#080d1a">
+  <title>Rakesh Tiwari | Developer Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg:#080d1a; --panel:#101a2c; --panel2:#142239; --text:#edf4ff;
+      --muted:#9aabc4; --line:rgba(173,197,230,.14); --accent:#65dcff;
+      --accent2:#a78bfa; --shadow:0 22px 70px rgba(0,0,0,.28);
+    }
+    body.light {
+      --bg:#f4f7fc; --panel:#fff; --panel2:#eaf0fa; --text:#142039;
+      --muted:#586983; --line:rgba(30,55,90,.14); --accent:#087da5;
+      --accent2:#7252cb; --shadow:0 22px 70px rgba(30,55,90,.10);
+    }
+    *{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth;scroll-padding-top:90px}
+    body{font-family:Manrope, sans-serif;background:var(--bg);color:var(--text);line-height:1.7;transition:background .25s,color .25s}
+    a{color:inherit;text-decoration:none}
+    button{font:inherit}
+    .container{width:min(1120px,calc(100% - 40px));margin:auto}
+    .mono{font-family:"DM Mono",monospace}
+    .accent{color:var(--accent)}
+    .gradient{background:linear-gradient(100deg,var(--accent),var(--accent2));-webkit-background-clip:text;background-clip:text;color:transparent}
+    header{position:fixed;inset:0 0 auto;z-index:50;background:color-mix(in srgb,var(--bg) 83%,transparent);backdrop-filter:blur(18px);border-bottom:1px solid var(--line)}
+    .nav{height:74px;display:flex;align-items:center;justify-content:space-between}
+    .brand{font-size:1.18rem;font-weight:800;letter-spacing:-.06em}
+    .brand span{color:var(--accent)}
+    .nav-links{display:flex;align-items:center;gap:27px;color:var(--muted);font-size:.88rem;font-weight:700}
+    .nav-links a:hover,.nav-links a.active{color:var(--accent)}
+    .nav-actions{display:flex;gap:10px;align-items:center}
+    .icon-btn,.menu-btn{border:1px solid var(--line);background:var(--panel);color:var(--text);width:40px;height:40px;border-radius:12px;cursor:pointer}
+    .menu-btn{display:none}
+    .btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;padding:12px 18px;border-radius:12px;background:var(--accent);color:#06111d;font-weight:800;font-size:.9rem;border:1px solid transparent;transition:.2s}
+    .btn:hover{transform:translateY(-3px);box-shadow:0 10px 30px color-mix(in srgb,var(--accent) 24%,transparent)}
+    .btn.secondary{background:transparent;color:var(--text);border-color:var(--line)}
+    .hero{min-height:100vh;display:grid;align-items:center;padding:130px 0 75px;position:relative;overflow:hidden}
+    .hero:before,.hero:after{content:"";position:absolute;width:360px;height:360px;border-radius:50%;filter:blur(110px);opacity:.16;pointer-events:none}
+    .hero:before{background:var(--accent);top:15%;left:-180px}.hero:after{background:var(--accent2);right:-170px;bottom:5%}
+    .hero-grid{display:grid;grid-template-columns:1.35fr .65fr;gap:60px;align-items:center;position:relative;z-index:1}
+    .eyebrow{display:inline-flex;gap:10px;align-items:center;color:var(--accent);font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;font-weight:800;margin-bottom:22px}
+    .dot{width:8px;height:8px;border-radius:50%;background:#51e0a5;box-shadow:0 0 14px #51e0a5}
+    h1{font-size:clamp(3.1rem,8vw,6.3rem);line-height:.99;letter-spacing:-.075em;margin-bottom:22px}
+    .role{font-size:clamp(1.1rem,2.4vw,1.55rem);font-weight:700;color:var(--muted);margin-bottom:18px}
+    .hero-copy{max-width:650px;color:var(--muted);font-size:1.02rem;margin-bottom:30px}
+    .hero-buttons{display:flex;flex-wrap:wrap;gap:12px}
+    .hero-card{background:linear-gradient(145deg,var(--panel),var(--panel2));border:1px solid var(--line);padding:28px;border-radius:26px;box-shadow:var(--shadow);transform:rotate(2deg)}
+    .avatar{height:210px;border-radius:20px;background:radial-gradient(circle at 25% 20%,rgba(101,220,255,.3),transparent 38%),linear-gradient(140deg,#172d49,#10172b);display:grid;place-items:center;font-size:5rem;font-weight:800;letter-spacing:-.1em;color:#dff8ff;border:1px solid rgba(101,220,255,.22)}
+    .hero-card p{color:var(--muted);font-size:.88rem;margin-top:20px}
+    .mini-stats{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:18px}
+    .mini-stat{padding:13px;background:var(--bg);border:1px solid var(--line);border-radius:14px}
+    .mini-stat strong{display:block;font-size:1.1rem}.mini-stat span{font-size:.72rem;color:var(--muted)}
+    section{padding:92px 0}
+    .section-head{margin-bottom:38px}
+    .kicker{font: .76rem "DM Mono",monospace;color:var(--accent);letter-spacing:.15em;text-transform:uppercase}
+    h2{font-size:clamp(2rem,4vw,3rem);letter-spacing:-.06em;line-height:1.15;margin-top:9px}
+    .section-intro{color:var(--muted);max-width:650px;margin-top:12px}
+    .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+    .panel{background:var(--panel);border:1px solid var(--line);border-radius:20px;padding:27px}
+    .panel p{color:var(--muted)}
+    .facts{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:22px}
+    .fact{padding:15px;background:var(--panel2);border-radius:13px}
+    .fact small{display:block;color:var(--muted);font-size:.72rem;text-transform:uppercase;letter-spacing:.08em}
+    .fact strong{font-size:.92rem}
+    .skill-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+    .skill{background:var(--panel);border:1px solid var(--line);border-radius:15px;padding:18px}
+    .skill strong{display:block;margin-bottom:5px}.skill span{font-size:.78rem;color:var(--muted)}
+    .timeline{display:grid;gap:16px}
+    .timeline-item{display:grid;grid-template-columns:170px 1fr;gap:22px;padding:23px;background:var(--panel);border:1px solid var(--line);border-radius:18px}
+    .timeline-date{font: .78rem "DM Mono",monospace;color:var(--accent)}
+    .timeline-item h3{font-size:1.08rem}.timeline-item .sub{color:var(--accent2);font-size:.84rem;font-weight:700;margin:3px 0 9px}
+    .timeline-item p,.timeline-item li{color:var(--muted);font-size:.9rem}
+    .timeline-item ul{padding-left:18px}
+    .project-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+    .project{background:var(--panel);border:1px solid var(--line);border-radius:20px;padding:25px;display:flex;flex-direction:column;min-height:270px;transition:.2s}
+    .project:hover{transform:translateY(-5px);border-color:color-mix(in srgb,var(--accent) 55%,var(--line))}
+    .project-icon{width:46px;height:46px;border-radius:13px;display:grid;place-items:center;background:var(--panel2);color:var(--accent);font-size:1.3rem;margin-bottom:18px}
+    .project h3{font-size:1.2rem;margin-bottom:8px}.project p{color:var(--muted);font-size:.9rem}
+    .tags{display:flex;flex-wrap:wrap;gap:7px;margin:17px 0}
+    .tag{font: .7rem "DM Mono",monospace;color:var(--accent);background:color-mix(in srgb,var(--accent) 10%,var(--panel));padding:5px 9px;border-radius:7px}
+    .project-links{display:flex;gap:16px;margin-top:auto;padding-top:12px;font-size:.84rem;font-weight:800}
+    .project-links a{color:var(--accent)}.project-links a:hover{text-decoration:underline}
+    .cert-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}
+    .cert{padding:22px;background:var(--panel);border:1px solid var(--line);border-radius:17px}
+    .cert .symbol{font-size:1.5rem;color:var(--accent)}.cert h3{font-size:1rem;margin:10px 0 5px}.cert p{font-size:.83rem;color:var(--muted)}
+    .contact-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:22px}
+    .contact-list{display:grid;gap:14px;margin-top:22px}
+    .contact-link{padding:14px;background:var(--panel2);border-radius:12px;display:flex;justify-content:space-between;gap:12px;font-size:.88rem}
+    .contact-link span:first-child{color:var(--muted)}
+    form{display:grid;gap:13px}
+    input,textarea{width:100%;padding:14px 15px;border:1px solid var(--line);border-radius:11px;background:var(--bg);color:var(--text);font:inherit;outline:none}
+    input:focus,textarea:focus{border-color:var(--accent)}textarea{min-height:130px;resize:vertical}
+    footer{padding:25px 0;border-top:1px solid var(--line);color:var(--muted);font-size:.82rem}
+    .footer-inner{display:flex;justify-content:space-between;gap:15px;flex-wrap:wrap}
+    @media(max-width:800px){
+      .nav-links{display:none;position:absolute;top:74px;left:0;right:0;background:var(--panel);padding:20px 25px;border-bottom:1px solid var(--line);flex-direction:column;align-items:flex-start}
+      .nav-links.open{display:flex}.menu-btn{display:block}.nav-actions .btn{display:none}
+      .hero-grid,.about-grid,.contact-grid{grid-template-columns:1fr}.hero-card{max-width:390px;margin:0 auto;transform:none}
+      .hero{padding-top:120px}.skill-grid{grid-template-columns:repeat(2,1fr)}
+      .timeline-item{grid-template-columns:1fr;gap:7px}.cert-grid{grid-template-columns:1fr 1fr}
+    }
+    @media(max-width:520px){.container{width:min(100% - 30px,1120px)}section{padding:70px 0}.project-grid,.cert-grid{grid-template-columns:1fr}.facts{grid-template-columns:1fr 1fr}.avatar{height:170px}}
+  </style>
+</head>
+<body>
+<header>
+  <div class="container nav">
+    <a class="brand" href="#home">Rakesh<span>.dev</span></a>
+    <nav class="nav-links" id="navLinks" aria-label="Main navigation">
+      <a href="#home">Home</a><a href="#about">About</a><a href="#skills">Skills</a>
+      <a href="#experience">Experience</a><a href="#projects">Projects</a><a href="#contact">Contact</a>
+    </nav>
+    <div class="nav-actions">
+      <button class="icon-btn" id="themeToggle" aria-label="Toggle theme" title="Toggle theme">☼</button>
+      <a class="btn" href="#contact">Let's Connect ↗</a>
+      <button class="menu-btn" id="menuToggle" aria-label="Open menu">☰</button>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section class="hero" id="home">
+    <div class="container hero-grid">
+      <div>
+        <div class="eyebrow"><span class="dot"></span> Open to opportunities</div>
+        <h1>Hi, I'm<br><span class="gradient">Rakesh Tiwari.</span></h1>
+        <div class="role">B.Tech CSE (AI &amp; DS) Student · Web Developer</div>
+        <p class="hero-copy">I enjoy building practical digital solutions, learning new technologies and turning ideas into useful web experiences. My interests include full-stack development, AI/ML fundamentals and cybersecurity.</p>
+        <div class="hero-buttons">
+          <a class="btn" href="#projects">Explore My Work ↗</a>
+          <a class="btn secondary" href="Rakesh_Tiwari_Resume.pdf" download>Download Resume ↓</a>
+        </div>
+      </div>
+      <aside class="hero-card">
+        <div class="avatar" aria-label="RT monogram">RT</div>
+        <p class="mono">DEVELOPER / PROBLEM SOLVER</p>
+        <div class="mini-stats">
+          <div class="mini-stat"><strong>AI &amp; DS</strong><span>Specialization</span></div>
+          <div class="mini-stat"><strong>Web</strong><span>Development focus</span></div>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <section id="about">
+    <div class="container">
+      <div class="section-head"><div class="kicker">01 / About</div><h2>A little about <span class="gradient">me.</span></h2></div>
+      <div class="about-grid">
+        <div class="panel">
+          <p>I'm Rakesh Indramani Tiwari, a Computer Science &amp; Engineering student specializing in Artificial Intelligence and Data Science at G.H. Raisoni Institute of Engineering, Nagpur. I am interested in full-stack web development and enjoy working on projects that solve everyday problems.</p>
+          <br>
+          <p>Alongside my technical learning, my professional experience has helped me develop communication, coordination, customer-handling and problem-solving skills. I value teamwork, consistency and learning by building.</p>
+        </div>
+        <div class="panel">
+          <h3>Quick profile</h3>
+          <div class="facts">
+            <div class="fact"><small>Education</small><strong>B.Tech CSE</strong></div>
+            <div class="fact"><small>Specialization</small><strong>AI &amp; Data Science</strong></div>
+            <div class="fact"><small>Institute</small><strong>G.H. Raisoni, Nagpur</strong></div>
+            <div class="fact"><small>Location</small><strong>Nagpur, Maharashtra</strong></div>
+            <div class="fact"><small>Focus</small><strong>Full-Stack Development</strong></div>
+            <div class="fact"><small>Interests</small><strong>AI/ML · Cybersecurity</strong></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="skills">
+    <div class="container">
+      <div class="section-head"><div class="kicker">02 / Skills</div><h2>Tools I work <span class="gradient">with.</span></h2><p class="section-intro">Technologies and areas listed in my current resume.</p></div>
+      <div class="skill-grid">
+        <div class="skill"><strong>C++</strong><span>Programming language</span></div>
+        <div class="skill"><strong>Python</strong><span>Programming language</span></div>
+        <div class="skill"><strong>Java</strong><span>Programming language</span></div>
+        <div class="skill"><strong>HTML &amp; CSS</strong><span>Web development</span></div>
+        <div class="skill"><strong>JavaScript</strong><span>Web development</span></div>
+        <div class="skill"><strong>Node.js</strong><span>Backend development</span></div>
+        <div class="skill"><strong>Firebase</strong><span>Authentication &amp; database</span></div>
+        <div class="skill"><strong>GitHub</strong><span>Version control platform</span></div>
+        <div class="skill"><strong>MS Excel</strong><span>Data handling &amp; reports</span></div>
+        <div class="skill"><strong>Tally</strong><span>Accounting software</span></div>
+        <div class="skill"><strong>AI/ML</strong><span>Fundamentals</span></div>
+        <div class="skill"><strong>Cybersecurity</strong><span>Core concepts</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="experience">
+    <div class="container">
+      <div class="section-head"><div class="kicker">03 / Experience</div><h2>Learning through <span class="gradient">experience.</span></h2></div>
+      <div class="timeline">
+        <article class="timeline-item">
+          <div class="timeline-date">Professional Experience</div>
+          <div><h3>Bus Captain · IntrCity SmartBus</h3><div class="sub">Operations &amp; Customer Service</div>
+            <ul><li>Supported daily bus operations, passenger assistance and service delivery.</li><li>Handled customer queries, ticketing issues and real-time operational challenges.</li><li>Coordinated with team members to support smooth workflows and on-time schedules.</li></ul>
+          </div>
+        </article>
+        <article class="timeline-item">
+          <div class="timeline-date">Internship</div>
+          <div><h3>Tally &amp; Data Entry Intern</h3><div class="sub">Financial Data Management</div>
+            <ul><li>Used Tally for accounting and record-keeping tasks.</li><li>Prepared and managed Excel-based reports and data with attention to accuracy.</li></ul>
+          </div>
+        </article>
+        <article class="timeline-item">
+          <div class="timeline-date">Professional Experience</div>
+          <div><h3>Sales &amp; Calling Executive</h3><div class="sub">Client Communication &amp; Lead Generation</div>
+            <ul><li>Worked on client communication, lead generation and sales activities.</li><li>Built negotiation and customer interaction skills while working toward targets.</li></ul>
+          </div>
+        </article>
+        <article class="timeline-item">
+          <div class="timeline-date">Academic / Leadership</div>
+          <div><h3>Team Guide · TrackIt Project &amp; VNIT Hackathon Representative</h3><div class="sub">Team Collaboration</div>
+            <ul><li>Guided a six-member team during the TrackIt Lost &amp; Found website project.</li><li>Represented the team at VNIT Hackathon and coordinated project development and presentations.</li></ul>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="projects">
+    <div class="container">
+      <div class="section-head"><div class="kicker">04 / Projects</div><h2>Things I've <span class="gradient">built.</span></h2><p class="section-intro">Selected work and development experience.</p></div>
+      <div class="project-grid">
+        <article class="project">
+          <div class="project-icon">⌕</div><h3>TrackIt — Lost &amp; Found Website</h3>
+          <p>A campus-focused platform for reporting and tracking lost or found items. Contributed to frontend development and backend integration, with Firebase authentication and real-time database features.</p>
+          <div class="tags"><span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">JavaScript</span><span class="tag">Node.js</span><span class="tag">Firebase</span></div>
+          <div class="project-links"><a href="https://github.com/rtiwari0410" target="_blank" rel="noopener">GitHub Profile ↗</a></div>
+        </article>
+        <article class="project">
+          <div class="project-icon">⌘</div><h3>Personal Portfolio Website</h3>
+          <p>A responsive personal website created to present my profile, skills and projects. The resume describes features including dark/light mode, typing animation, GitHub stats, resume download and a contact form.</p>
+          <div class="tags"><span class="tag">HTML5</span><span class="tag">CSS3</span><span class="tag">JavaScript</span><span class="tag">Netlify</span></div>
+          <div class="project-links"><a href="https://github.com/rtiwari0410" target="_blank" rel="noopener">GitHub Profile ↗</a></div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="certifications">
+    <div class="container">
+      <div class="section-head"><div class="kicker">05 / Activities</div><h2>Learning &amp; <span class="gradient">recognition.</span></h2></div>
+      <div class="cert-grid">
+        <article class="cert"><div class="symbol">▤</div><h3>Tally &amp; MS Excel Training</h3><p>Training in accounting software, spreadsheets and data handling.</p></article>
+        <article class="cert"><div class="symbol">⌘</div><h3>VNIT Hackathon Participation</h3><p>Represented the project team and participated in collaborative problem-solving.</p></article>
+        <article class="cert"><div class="symbol">↗</div><h3>Team Leadership</h3><p>Guided peers in project coordination, coding practices and teamwork.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="container">
+      <div class="section-head"><div class="kicker">06 / Contact</div><h2>Let's build something <span class="gradient">useful.</span></h2><p class="section-intro">Interested in internships, entry-level opportunities, collaborations or project discussions? Feel free to reach out.</p></div>
+      <div class="contact-grid">
+        <div class="panel">
+          <h3>Contact details</h3>
+          <div class="contact-list">
+            <a class="contact-link" href="mailto:rtiwari07320@gmail.com"><span>Email</span><strong>rtiwari07320@gmail.com ↗</strong></a>
+            <a class="contact-link" href="tel:+919766922799"><span>Phone</span><strong>+91 97669 22799 ↗</strong></a>
+            <a class="contact-link" href="https://github.com/rtiwari0410" target="_blank" rel="noopener"><span>GitHub</span><strong>rtiwari0410 ↗</strong></a>
+            <a class="contact-link" href="https://linkedin.com/in/rakesh-tiwari-1a092833a" target="_blank" rel="noopener"><span>LinkedIn</span><strong>View profile ↗</strong></a>
+          </div>
+        </div>
+        <div class="panel">
+          <form id="contactForm">
+            <input id="name" type="text" placeholder="Your name" required>
+            <input id="email" type="email" placeholder="Your email address" required>
+            <input id="subject" type="text" placeholder="Subject" required>
+            <textarea id="message" placeholder="Write your message..." required></textarea>
+            <button class="btn" type="submit">Send via Email ↗</button>
+            <p style="font-size:.76rem;color:var(--muted)">This form opens your email app with the message prepared. It does not store submissions.</p>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer><div class="container footer-inner"><span>© <span id="year"></span> Rakesh Indramani Tiwari</span><span class="mono">Designed &amp; built with HTML · CSS · JavaScript</span></div></footer>
+
+<script>
+  const themeToggle = document.getElementById('themeToggle');
+  themeToggle.addEventListener('click', () => {
+    document.body.classList.toggle('light');
+    themeToggle.textContent = document.body.classList.contains('light') ? '☾' : '☼';
+    localStorage.setItem('portfolio-theme', document.body.classList.contains('light') ? 'light' : 'dark');
+  });
+  if (localStorage.getItem('portfolio-theme') === 'light') {
+    document.body.classList.add('light');
+    themeToggle.textContent = '☾';
+  }
+  const menuToggle = document.getElementById('menuToggle');
+  const navLinks = document.getElementById('navLinks');
+  menuToggle.addEventListener('click', () => navLinks.classList.toggle('open'));
+  navLinks.querySelectorAll('a').forEach(link => link.addEventListener('click', () => navLinks.classList.remove('open')));
+  document.getElementById('year').textContent = new Date().getFullYear();
+  document.getElementById('contactForm').addEventListener('submit', event => {
+    event.preventDefault();
+    const name = document.getElementById('name').value.trim();
+    const email = document.getElementById('email').value.trim();
+    const subject = document.getElementById('subject').value.trim();
+    const message = document.getElementById('message').value.trim();
+    const body = `Name: ${name}\nEmail: ${email}\n\n${message}`;
+    window.location.href = `mailto:rtiwari07320@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+  });
+</script>
+</body>
+</html>
