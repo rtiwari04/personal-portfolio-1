@@ -1,0 +1,2085 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Portfolio of Rakesh Indramani Tiwari — B.Tech CSE (AI & DS) at G.H. Raisoni Institute of Engineering, Nagpur. Full-Stack Developer & AI/ML Engineer." />
+  <title>Rakesh Indramani Tiwari | Full-Stack &amp; AI/ML Portfolio</title>
+
+  <!-- Google Fonts: Space Grotesk, Plus Jakarta Sans & JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ==========================================================================
+       1. DESIGN TOKENS & CHALKBOARD / STUDIO THEME SYSTEM
+       ========================================================================== */
+    :root {
+      --font-display: 'Space Grotesk', sans-serif;
+      --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+
+      --container-max: 1180px;
+      --nav-height: 74px;
+      --radius-sm: 10px;
+      --radius-md: 16px;
+      --radius-lg: 24px;
+      --radius-full: 9999px;
+
+      --amber: #fbbf24;
+      --amber-soft: rgba(251, 191, 36, 0.14);
+      --amber-border: rgba(251, 191, 36, 0.35);
+      --cyan: #38bdf8;
+      --cyan-soft: rgba(56, 189, 248, 0.13);
+      --cyan-border: rgba(56, 189, 248, 0.35);
+      --emerald: #34d399;
+      --emerald-soft: rgba(52, 211, 153, 0.13);
+
+      --sticky-bg: #fef08a;
+      --sticky-text: #1c1917;
+      --sticky-border: #eab308;
+
+      --transition-fast: 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+      --transition-base: 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    /* Chalkboard Dark Mode (Default) */
+    [data-theme="dark"] {
+      --bg-canvas: #0b0e14;
+      --bg-elevated: #111622;
+      --bg-bento: #151b28;
+      --bg-bento-hover: #1a2232;
+      --bg-nav: rgba(11, 14, 20, 0.84);
+      --dot-color: rgba(148, 163, 184, 0.16);
+
+      --text-primary: #f8fafc;
+      --text-secondary: #94a3b8;
+      --text-muted: #64748b;
+
+      --border-subtle: rgba(148, 163, 184, 0.14);
+      --border-strong: rgba(251, 191, 36, 0.35);
+      --shadow-card: 0 10px 30px -10px rgba(0, 0, 0, 0.6);
+      --shadow-glow: 0 0 32px rgba(251, 191, 36, 0.12);
+    }
+
+    /* Studio Paper Light Mode */
+    [data-theme="light"] {
+      --bg-canvas: #f6f7f9;
+      --bg-elevated: #ffffff;
+      --bg-bento: #ffffff;
+      --bg-bento-hover: #f8fafc;
+      --bg-nav: rgba(246, 247, 249, 0.88);
+      --dot-color: rgba(15, 23, 42, 0.11);
+
+      --text-primary: #0f172a;
+      --text-secondary: #475569;
+      --text-muted: #64748b;
+
+      --amber: #d97706;
+      --amber-soft: rgba(217, 119, 6, 0.1);
+      --amber-border: rgba(217, 119, 6, 0.3);
+      --cyan: #0284c7;
+      --cyan-soft: rgba(2, 132, 199, 0.1);
+      --cyan-border: rgba(2, 132, 199, 0.3);
+      --emerald: #059669;
+      --emerald-soft: rgba(5, 150, 105, 0.1);
+
+      --border-subtle: rgba(15, 23, 42, 0.1);
+      --border-strong: rgba(217, 119, 6, 0.35);
+      --shadow-card: 0 10px 28px -8px rgba(15, 23, 42, 0.08);
+      --shadow-glow: 0 8px 24px rgba(217, 119, 6, 0.1);
+    }
+
+    /* ==========================================================================
+       2. RESET & BASE CANVAS
+       ========================================================================== */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: calc(var(--nav-height) + 20px);
+    }
+
+    body {
+      font-family: var(--font-sans);
+      background-color: var(--bg-canvas);
+      color: var(--text-primary);
+      line-height: 1.65;
+      overflow-x: hidden;
+      background-image: radial-gradient(var(--dot-color) 1.25px, transparent 1.25px);
+      background-size: 24px 24px;
+      transition: background-color var(--transition-base), color var(--transition-base);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    ul { list-style: none; }
+    button { font-family: inherit; cursor: pointer; border: none; background: none; color: inherit; }
+
+    .container {
+      width: 100%;
+      max-width: var(--container-max);
+      margin: 0 auto;
+      padding: 0 1.35rem;
+    }
+
+    /* ==========================================================================
+       3. STICKY GLASS HEADER
+       ========================================================================== */
+    .header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      height: var(--nav-height);
+      background: var(--bg-nav);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    .nav-wrap {
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 0.7rem;
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 1.15rem;
+      letter-spacing: -0.02em;
+    }
+
+    .brand-crown {
+      width: 38px;
+      height: 38px;
+      border-radius: 10px;
+      background: linear-gradient(135deg, var(--amber), #f59e0b);
+      color: #0b0e14;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-mono);
+      font-weight: 700;
+      font-size: 0.95rem;
+      box-shadow: 0 4px 14px rgba(251, 191, 36, 0.3);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 1.65rem;
+    }
+
+    .nav-link {
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--text-secondary);
+      position: relative;
+      padding: 0.3rem 0;
+      transition: color var(--transition-fast);
+    }
+
+    .nav-link:hover, .nav-link.active {
+      color: var(--amber);
+    }
+
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: -2px;
+      width: 0;
+      height: 2px;
+      background: var(--amber);
+      border-radius: 2px;
+      transition: width var(--transition-fast);
+    }
+
+    .nav-link:hover::after, .nav-link.active::after {
+      width: 100%;
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .icon-btn {
+      width: 42px;
+      height: 42px;
+      border-radius: var(--radius-sm);
+      background: var(--bg-bento);
+      border: 1px solid var(--border-subtle);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-primary);
+      transition: all var(--transition-fast);
+    }
+
+    .icon-btn:hover {
+      border-color: var(--amber);
+      color: var(--amber);
+      transform: translateY(-2px);
+    }
+
+    .mobile-menu-btn { display: none; }
+
+    .mobile-drawer {
+      display: none;
+      position: fixed;
+      top: var(--nav-height);
+      left: 0;
+      right: 0;
+      background: var(--bg-bento);
+      border-bottom: 1px solid var(--border-subtle);
+      padding: 1.25rem;
+      flex-direction: column;
+      gap: 0.65rem;
+      z-index: 99;
+      box-shadow: var(--shadow-card);
+      transform: translateY(-10px);
+      opacity: 0;
+      pointer-events: none;
+      transition: all var(--transition-fast);
+    }
+
+    .mobile-drawer.open {
+      transform: translateY(0);
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .mobile-drawer a {
+      padding: 0.75rem 1rem;
+      border-radius: var(--radius-sm);
+      font-weight: 600;
+      color: var(--text-secondary);
+    }
+
+    .mobile-drawer a:hover {
+      background: var(--amber-soft);
+      color: var(--amber);
+    }
+
+    /* ==========================================================================
+       4. BENTO CARD SYSTEM & STICKY NOTES
+       ========================================================================== */
+    .bento-card {
+      background: var(--bg-bento);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      padding: 1.75rem;
+      box-shadow: var(--shadow-card);
+      transition: transform var(--transition-base), border-color var(--transition-base), box-shadow var(--transition-base);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .bento-card:hover {
+      border-color: var(--border-strong);
+      box-shadow: var(--shadow-card), var(--shadow-glow);
+    }
+
+    /* Sticky Note Aesthetic Accent */
+    .sticky-note {
+      background: var(--sticky-bg);
+      color: var(--sticky-text);
+      border: 1px solid var(--sticky-border);
+      border-radius: 4px 14px 14px 14px;
+      padding: 1.15rem 1.25rem;
+      box-shadow: 0 10px 22px rgba(0, 0, 0, 0.28);
+      transform: rotate(-1.2deg);
+      transition: transform var(--transition-fast);
+      position: relative;
+    }
+
+    .sticky-note:hover {
+      transform: rotate(0deg) translateY(-2px);
+    }
+
+    .sticky-note::before {
+      content: '';
+      position: absolute;
+      top: -6px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 44px;
+      height: 12px;
+      background: rgba(255, 255, 255, 0.55);
+      border-radius: 2px;
+    }
+
+    .sticky-title {
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 0.55rem;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      color: #854d0e;
+    }
+
+    .sticky-list {
+      display: grid;
+      gap: 0.35rem;
+      font-size: 0.86rem;
+      font-weight: 600;
+    }
+
+    .sticky-list li {
+      display: flex;
+      align-items: center;
+      gap: 0.45rem;
+    }
+
+    /* ==========================================================================
+       5. ASYMMETRIC BENTO HERO SECTION
+       ========================================================================== */
+    .hero-section {
+      padding: 2.75rem 0 3.5rem;
+    }
+
+    .hero-bento {
+      display: grid;
+      grid-template-columns: 1.35fr 0.95fr;
+      gap: 1.5rem;
+      align-items: stretch;
+    }
+
+    .hero-main-card {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 2.25rem;
+    }
+
+    .status-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.55rem;
+      padding: 0.42rem 0.95rem;
+      border-radius: var(--radius-full);
+      background: var(--emerald-soft);
+      border: 1px solid rgba(52, 211, 153, 0.35);
+      color: var(--emerald);
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      font-weight: 600;
+      margin-bottom: 1.25rem;
+      width: fit-content;
+    }
+
+    .pulse-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--emerald);
+      box-shadow: 0 0 0 4px rgba(52, 211, 153, 0.25);
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(1.3); opacity: 0.7; }
+    }
+
+    .hero-title {
+      font-family: var(--font-display);
+      font-size: clamp(2.15rem, 4.4vw, 3.45rem);
+      font-weight: 700;
+      line-height: 1.1;
+      letter-spacing: -0.03em;
+      margin-bottom: 0.85rem;
+    }
+
+    .highlight-amber {
+      color: var(--amber);
+    }
+
+    .highlight-cyan {
+      color: var(--cyan);
+    }
+
+    .hero-edu-tag {
+      font-size: 1.02rem;
+      font-weight: 600;
+      color: var(--text-primary);
+      margin-bottom: 1rem;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .hero-summary {
+      color: var(--text-secondary);
+      font-size: 0.98rem;
+      max-width: 60ch;
+      margin-bottom: 1.5rem;
+    }
+
+    /* Mantra Pills */
+    .mantra-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.55rem;
+      margin-bottom: 1.75rem;
+    }
+
+    .mantra-pill {
+      font-family: var(--font-mono);
+      font-size: 0.76rem;
+      font-weight: 600;
+      padding: 0.36rem 0.8rem;
+      border-radius: var(--radius-full);
+      background: var(--amber-soft);
+      border: 1px solid var(--amber-border);
+      color: var(--amber);
+    }
+
+    .mantra-pill.cyan {
+      background: var(--cyan-soft);
+      border-color: var(--cyan-border);
+      color: var(--cyan);
+    }
+
+    /* Action Buttons */
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin-bottom: 1.65rem;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      padding: 0.78rem 1.35rem;
+      border-radius: var(--radius-sm);
+      font-weight: 700;
+      font-size: 0.9rem;
+      transition: all var(--transition-fast);
+    }
+
+    .btn-amber {
+      background: var(--amber);
+      color: #0b0e14;
+      box-shadow: 0 6px 20px rgba(251, 191, 36, 0.25);
+    }
+
+    .btn-amber:hover {
+      transform: translateY(-2px);
+      filter: brightness(1.06);
+    }
+
+    .btn-outline {
+      background: var(--bg-elevated);
+      border: 1px solid var(--border-subtle);
+      color: var(--text-primary);
+    }
+
+    .btn-outline:hover {
+      border-color: var(--cyan);
+      color: var(--cyan);
+      transform: translateY(-2px);
+    }
+
+    /* Quick Contact Strip inside Hero */
+    .quick-contact-strip {
+      padding-top: 1.25rem;
+      border-top: 1px solid var(--border-subtle);
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 0.85rem 1.35rem;
+      font-size: 0.84rem;
+      color: var(--text-secondary);
+    }
+
+    .quick-contact-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      transition: color var(--transition-fast);
+    }
+
+    .quick-contact-item:hover {
+      color: var(--amber);
+    }
+
+    /* Right Hero Column: Illustrated Spotlight + Whiteboard + Sticky Note */
+    .hero-visual-col {
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+
+    .avatar-card {
+      padding: 1.15rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .avatar-frame {
+      position: relative;
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      border: 2px solid var(--amber-border);
+      background: linear-gradient(145deg, #182032, #0d121d);
+      aspect-ratio: 1 / 1;
+      max-height: 340px;
+      width: 100%;
+    }
+
+    .avatar-frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+      display: block;
+    }
+
+    /* Clean CSS Illustrated Fallback if external image file isn't co-located */
+    .avatar-fallback {
+      width: 100%;
+      height: 100%;
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 1.5rem;
+      text-align: center;
+      background:
+        radial-gradient(circle at 20% 20%, rgba(251, 191, 36, 0.18), transparent 50%),
+        radial-gradient(circle at 80% 80%, rgba(56, 189, 248, 0.18), transparent 50%),
+        #111622;
+    }
+
+    .avatar-frame.img-error img { display: none; }
+    .avatar-frame.img-error .avatar-fallback { display: flex; }
+
+    .avatar-caption-badge {
+      position: absolute;
+      bottom: 0.75rem;
+      left: 0.75rem;
+      right: 0.75rem;
+      background: rgba(11, 14, 20, 0.85);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(251, 191, 36, 0.35);
+      border-radius: var(--radius-sm);
+      padding: 0.5rem 0.75rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-family: var(--font-mono);
+      font-size: 0.74rem;
+      color: #f8fafc;
+    }
+
+    /* Pinned Whiteboard Card */
+    .whiteboard-pin {
+      background: var(--bg-elevated);
+      border: 1px dashed var(--cyan-border);
+      border-radius: var(--radius-md);
+      padding: 1rem 1.15rem;
+    }
+
+    .wb-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 0.45rem;
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      color: var(--cyan);
+      font-weight: 700;
+    }
+
+    .wb-title {
+      font-weight: 700;
+      font-size: 0.98rem;
+      margin-bottom: 0.35rem;
+    }
+
+    .wb-roles {
+      display: flex;
+      gap: 0.45rem;
+      flex-wrap: wrap;
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+    }
+
+    .wb-roles span {
+      padding: 0.2rem 0.55rem;
+      border-radius: 6px;
+      background: var(--cyan-soft);
+      color: var(--cyan);
+    }
+
+    /* ==========================================================================
+       6. SECTION HEADERS & FILTER TABS
+       ========================================================================== */
+    section { padding: 3.75rem 0; }
+
+    .section-head {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 1.25rem;
+      margin-bottom: 2.25rem;
+    }
+
+    .eyebrow {
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--amber);
+      display: block;
+      margin-bottom: 0.35rem;
+    }
+
+    .section-title {
+      font-family: var(--font-display);
+      font-size: clamp(1.7rem, 3.2vw, 2.35rem);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+
+    .filter-tabs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .tab-btn {
+      padding: 0.48rem 1rem;
+      border-radius: var(--radius-full);
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      font-weight: 600;
+      background: var(--bg-bento);
+      border: 1px solid var(--border-subtle);
+      color: var(--text-secondary);
+      transition: all var(--transition-fast);
+    }
+
+    .tab-btn:hover {
+      border-color: var(--amber);
+      color: var(--text-primary);
+    }
+
+    .tab-btn.active {
+      background: var(--amber);
+      border-color: var(--amber);
+      color: #0b0e14;
+    }
+
+    /* ==========================================================================
+       7. FEATURED PROJECTS BENTO SHOWCASE
+       ========================================================================== */
+    .projects-bento {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+    }
+
+    .project-card {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .project-card.flagship {
+      grid-column: 1 / -1;
+      border-color: var(--amber-border);
+      background: linear-gradient(145deg, var(--bg-bento), rgba(251, 191, 36, 0.04));
+    }
+
+    .project-card.hidden { display: none; }
+
+    .project-meta-top {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.75rem;
+      margin-bottom: 1rem;
+    }
+
+    .flagship-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.3rem 0.75rem;
+      border-radius: var(--radius-full);
+      background: var(--amber);
+      color: #0b0e14;
+      font-family: var(--font-mono);
+      font-size: 0.74rem;
+      font-weight: 700;
+    }
+
+    .cat-pill {
+      font-family: var(--font-mono);
+      font-size: 0.74rem;
+      font-weight: 600;
+      padding: 0.28rem 0.7rem;
+      border-radius: var(--radius-full);
+      background: var(--cyan-soft);
+      color: var(--cyan);
+      border: 1px solid var(--cyan-border);
+    }
+
+    .project-title {
+      font-family: var(--font-display);
+      font-size: 1.38rem;
+      font-weight: 700;
+      margin-bottom: 0.65rem;
+    }
+
+    .project-desc {
+      color: var(--text-secondary);
+      font-size: 0.95rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .feature-highlights {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+      gap: 0.6rem;
+      margin-bottom: 1.35rem;
+    }
+
+    .feature-chip {
+      font-size: 0.82rem;
+      color: var(--text-primary);
+      background: var(--bg-elevated);
+      border: 1px solid var(--border-subtle);
+      padding: 0.5rem 0.75rem;
+      border-radius: var(--radius-sm);
+      display: flex;
+      align-items: center;
+      gap: 0.45rem;
+    }
+
+    .feature-chip span { color: var(--emerald); font-weight: 700; }
+
+    .stack-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.45rem;
+      margin-bottom: 1.35rem;
+    }
+
+    .stack-tag {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      font-weight: 600;
+      padding: 0.28rem 0.65rem;
+      border-radius: 6px;
+      background: var(--bg-elevated);
+      border: 1px solid var(--border-subtle);
+      color: var(--text-primary);
+    }
+
+    .project-actions {
+      padding-top: 1rem;
+      border-top: 1px solid var(--border-subtle);
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.75rem;
+    }
+
+    .detail-btn {
+      font-family: var(--font-mono);
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: var(--amber);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.4rem 0.8rem;
+      border-radius: var(--radius-sm);
+      background: var(--amber-soft);
+      transition: all var(--transition-fast);
+    }
+
+    .detail-btn:hover {
+      background: var(--amber);
+      color: #0b0e14;
+    }
+
+    .gh-link {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--text-secondary);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      transition: color var(--transition-fast);
+    }
+
+    .gh-link:hover { color: var(--cyan); }
+
+    /* ==========================================================================
+       8. TECHNICAL SKILLS MATRIX
+       ========================================================================== */
+    .skills-bento {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.35rem;
+    }
+
+    .skill-box.hidden { display: none; }
+
+    .skill-box-head {
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+    }
+
+    .skill-box-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 9px;
+      background: var(--amber-soft);
+      color: var(--amber);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .skill-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .skill-chip {
+      font-size: 0.84rem;
+      font-weight: 600;
+      padding: 0.4rem 0.8rem;
+      border-radius: var(--radius-sm);
+      background: var(--bg-elevated);
+      border: 1px solid var(--border-subtle);
+      color: var(--text-primary);
+      transition: all var(--transition-fast);
+    }
+
+    .skill-chip:hover {
+      border-color: var(--cyan);
+      color: var(--cyan);
+      transform: translateY(-2px);
+    }
+
+    /* ==========================================================================
+       9. EXPERIENCE, EDUCATION & BEYOND CODE BENTO
+       ========================================================================== */
+    .career-bento {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 1.5rem;
+    }
+
+    .exp-top {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 0.75rem;
+      margin-bottom: 1rem;
+    }
+
+    .exp-role {
+      font-family: var(--font-display);
+      font-size: 1.3rem;
+      font-weight: 700;
+    }
+
+    .exp-org {
+      color: var(--amber);
+      font-weight: 700;
+      font-size: 0.96rem;
+    }
+
+    .date-badge {
+      font-family: var(--font-mono);
+      font-size: 0.76rem;
+      font-weight: 700;
+      padding: 0.32rem 0.75rem;
+      border-radius: var(--radius-full);
+      background: var(--cyan-soft);
+      color: var(--cyan);
+      border: 1px solid var(--cyan-border);
+    }
+
+    .bullet-list {
+      display: grid;
+      gap: 0.65rem;
+      color: var(--text-secondary);
+      font-size: 0.94rem;
+    }
+
+    .bullet-list li {
+      padding-left: 1.25rem;
+      position: relative;
+    }
+
+    .bullet-list li::before {
+      content: '▹';
+      position: absolute;
+      left: 0;
+      color: var(--amber);
+      font-weight: 700;
+    }
+
+    .edu-timeline {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .edu-item {
+      padding: 1.1rem 1.25rem;
+      border-radius: var(--radius-md);
+      background: var(--bg-elevated);
+      border: 1px solid var(--border-subtle);
+    }
+
+    .edu-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 0.6rem;
+      margin-bottom: 0.3rem;
+    }
+
+    .edu-title { font-weight: 700; font-size: 0.98rem; }
+    .edu-score {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 0.2rem 0.6rem;
+      border-radius: var(--radius-full);
+      background: var(--emerald-soft);
+      color: var(--emerald);
+      white-space: nowrap;
+    }
+
+    .edu-sub { font-size: 0.86rem; color: var(--text-secondary); }
+
+    /* Achievements & Beyond Code Strip */
+    .sub-bento-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 1.5rem;
+      margin-top: 1.5rem;
+    }
+
+    .ach-grid {
+      display: grid;
+      gap: 0.9rem;
+    }
+
+    .ach-row {
+      display: flex;
+      gap: 0.85rem;
+      align-items: flex-start;
+      padding: 0.95rem 1.1rem;
+      border-radius: var(--radius-md);
+      background: var(--bg-elevated);
+      border: 1px solid var(--border-subtle);
+    }
+
+    .ach-badge-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 9px;
+      background: var(--amber-soft);
+      color: var(--amber);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .interests-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0.65rem;
+      margin-top: 0.85rem;
+    }
+
+    .interest-pill {
+      padding: 0.65rem 0.85rem;
+      border-radius: var(--radius-sm);
+      background: var(--bg-elevated);
+      border: 1px solid var(--border-subtle);
+      font-weight: 600;
+      font-size: 0.88rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: all var(--transition-fast);
+    }
+
+    .interest-pill:hover {
+      border-color: var(--amber);
+      transform: translateY(-2px);
+    }
+
+    /* ==========================================================================
+       10. CONTACT BENTO & INTERACTIVE MESSAGE PREVIEW
+       ========================================================================== */
+    .contact-bento {
+      display: grid;
+      grid-template-columns: 1fr 1.1fr;
+      gap: 1.5rem;
+    }
+
+    .contact-links-grid {
+      display: grid;
+      gap: 0.85rem;
+      margin-top: 1.25rem;
+    }
+
+    .contact-tile {
+      padding: 1rem 1.15rem;
+      border-radius: var(--radius-md);
+      background: var(--bg-elevated);
+      border: 1px solid var(--border-subtle);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.75rem;
+      transition: border-color var(--transition-fast);
+    }
+
+    .contact-tile:hover { border-color: var(--amber); }
+
+    .tile-label {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      display: block;
+    }
+
+    .tile-val { font-weight: 700; font-size: 0.92rem; word-break: break-all; }
+
+    .mini-btn {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 0.38rem 0.75rem;
+      border-radius: var(--radius-full);
+      background: var(--amber-soft);
+      color: var(--amber);
+      white-space: nowrap;
+      transition: all var(--transition-fast);
+    }
+
+    .mini-btn:hover { background: var(--amber); color: #0b0e14; }
+
+    /* Contact Form */
+    .contact-form {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .form-group { display: grid; gap: 0.4rem; }
+    .form-label {
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: var(--text-secondary);
+    }
+
+    .form-input, .form-textarea {
+      width: 100%;
+      padding: 0.78rem 1rem;
+      border-radius: var(--radius-sm);
+      background: var(--bg-elevated);
+      border: 1px solid var(--border-subtle);
+      color: var(--text-primary);
+      font-family: inherit;
+      font-size: 0.92rem;
+      transition: border-color var(--transition-fast);
+    }
+
+    .form-input:focus, .form-textarea:focus {
+      outline: none;
+      border-color: var(--amber);
+    }
+
+    .preview-box {
+      margin-top: 0.75rem;
+      padding: 1rem;
+      border-radius: var(--radius-sm);
+      background: var(--bg-elevated);
+      border: 1px dashed var(--emerald);
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      display: none;
+    }
+
+    .preview-box.active { display: block; }
+
+    /* ==========================================================================
+       11. PROJECT DETAIL MODAL & TOAST
+       ========================================================================== */
+    .modal-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(5, 8, 14, 0.78);
+      backdrop-filter: blur(8px);
+      z-index: 200;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 1.25rem;
+    }
+
+    .modal-backdrop.open { display: flex; }
+
+    .modal-panel {
+      width: 100%;
+      max-width: 620px;
+      background: var(--bg-bento);
+      border: 1px solid var(--amber-border);
+      border-radius: var(--radius-lg);
+      padding: 2rem;
+      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.65);
+      position: relative;
+      animation: modalIn 0.25s ease;
+    }
+
+    @keyframes modalIn {
+      from { opacity: 0; transform: translateY(14px) scale(0.98); }
+      to { opacity: 1; transform: translateY(0) scale(1); }
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 1.25rem;
+      right: 1.25rem;
+      width: 36px;
+      height: 36px;
+      border-radius: 8px;
+      background: var(--bg-elevated);
+      border: 1px solid var(--border-subtle);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .modal-close:hover { border-color: var(--amber); color: var(--amber); }
+
+    .toast {
+      position: fixed;
+      bottom: 1.5rem;
+      right: 1.5rem;
+      background: var(--bg-bento);
+      border: 1px solid var(--emerald);
+      color: var(--text-primary);
+      padding: 0.8rem 1.25rem;
+      border-radius: var(--radius-sm);
+      box-shadow: var(--shadow-card);
+      font-family: var(--font-mono);
+      font-size: 0.82rem;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 0.55rem;
+      z-index: 300;
+      transform: translateY(130%);
+      opacity: 0;
+      transition: all var(--transition-fast);
+    }
+
+    .toast.show { transform: translateY(0); opacity: 1; }
+
+    footer {
+      border-top: 1px solid var(--border-subtle);
+      padding: 2rem 0;
+      text-align: center;
+      font-size: 0.86rem;
+      color: var(--text-muted);
+    }
+
+    /* ==========================================================================
+       12. RESPONSIVE BREAKPOINTS
+       ========================================================================== */
+    @media (max-width: 980px) {
+      .hero-bento, .career-bento, .sub-bento-grid, .contact-bento {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .mobile-menu-btn { display: inline-flex; }
+      .mobile-drawer { display: flex; }
+      .projects-bento, .skills-bento { grid-template-columns: 1fr; }
+      .hero-main-card { padding: 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+  <!-- ========================================================================
+       STICKY NAVIGATION HEADER
+       ======================================================================== -->
+  <header class="header">
+    <div class="container nav-wrap">
+      <a href="#top" class="brand" aria-label="Rakesh Tiwari Home">
+        <span class="brand-crown">♛</span>
+        <span>Rakesh Tiwari<span class="highlight-amber">.dev</span></span>
+      </a>
+
+      <nav class="nav-links" aria-label="Main Navigation">
+        <a href="#projects" class="nav-link">Projects</a>
+        <a href="#skills" class="nav-link">Skills</a>
+        <a href="#experience" class="nav-link">Experience &amp; Edu</a>
+        <a href="#contact" class="nav-link">Contact</a>
+      </nav>
+
+      <div class="nav-actions">
+        <button id="themeToggle" class="icon-btn" aria-label="Switch Theme" title="Toggle Chalkboard Dark / Studio Light">
+          <svg id="sunIcon" width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="5"></circle>
+            <line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+            <line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+          </svg>
+          <svg id="moonIcon" width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:none;">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+          </svg>
+        </button>
+
+        <button id="mobileMenuBtn" class="icon-btn mobile-menu-btn" aria-label="Toggle Menu" aria-expanded="false">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <nav id="mobileDrawer" class="mobile-drawer" aria-label="Mobile Navigation">
+    <a href="#projects">Projects</a>
+    <a href="#skills">Skills</a>
+    <a href="#experience">Experience &amp; Education</a>
+    <a href="#contact">Contact</a>
+  </nav>
+
+  <!-- ========================================================================
+       MAIN BENTO PORTFOLIO
+       ======================================================================== -->
+  <main id="top">
+    <!-- 1. ASYMMETRIC BENTO HERO -->
+    <section class="hero-section">
+      <div class="container hero-bento">
+        <!-- Left Main Identity Card -->
+        <div class="bento-card hero-main-card">
+          <div>
+            <div class="status-badge">
+              <span class="pulse-dot"></span>
+              <span>3rd Year CSE • Open to Full-Stack &amp; AI/ML Roles</span>
+            </div>
+
+            <h1 class="hero-title">
+              Rakesh <span class="highlight-amber">Tiwari</span>
+            </h1>
+
+            <p class="hero-edu-tag">
+              <span>B.Tech CSE (AI &amp; DS)</span>
+              <span class="highlight-cyan">@</span>
+              <span>G.H. Raisoni Institute of Engineering, Nagpur (2023–2028)</span>
+            </p>
+
+            <p class="hero-summary">
+              Motivated Computer Science Engineering student specializing in Artificial Intelligence &amp; Data Science with a strong foundation in Full-Stack Web Development and Machine Learning. Focused on building scalable software systems, intelligent NLP/ML tools, and clean user-centric products.
+            </p>
+
+            <!-- Personal Mantra Pills -->
+            <div class="mantra-row" aria-label="Personal Developer Mantras">
+              <span class="mantra-pill">♛ Dream • Learn • Build • Grow</span>
+              <span class="mantra-pill cyan">Build &gt; Learn &gt; Deploy</span>
+              <span class="mantra-pill">Better Than Yesterday</span>
+            </div>
+
+            <!-- Primary CTA Buttons -->
+            <div class="hero-actions">
+              <a href="#projects" class="btn btn-amber">
+                <span>View Flagship Work</span>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                  <line x1="5" y1="12" x2="19" y2="12"></line>
+                  <polyline points="12 5 19 12 12 19"></polyline>
+                </svg>
+              </a>
+              <button id="heroCopyEmail" type="button" class="btn btn-outline">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                  <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                </svg>
+                <span>Copy Email</span>
+              </button>
+              <a href="https://github.com/rtiwari0410" target="_blank" rel="noopener noreferrer" class="btn btn-outline">
+                <span>GitHub / tiwari0410 ↗</span>
+              </a>
+            </div>
+          </div>
+
+          <!-- Contact Strip -->
+          <div class="quick-contact-strip">
+            <a href="mailto:rakesh.tiwari0410@gmail.com" class="quick-contact-item">
+              <span>✉</span> rakesh.tiwari0410@gmail.com
+            </a>
+            <a href="tel:+919766922799" class="quick-contact-item">
+              <span>☎</span> +91 9766922799
+            </a>
+            <a href="https://www.linkedin.com/in/rakesh-tiwari" target="_blank" rel="noopener noreferrer" class="quick-contact-item">
+              <span>in</span> rakesh-tiwari
+            </a>
+          </div>
+        </div>
+
+        <!-- Right Visual Spotlight Column -->
+        <div class="hero-visual-col">
+          <!-- Custom Illustrated Avatar Spotlight -->
+          <div class="bento-card avatar-card">
+            <div class="avatar-frame" id="avatarFrame">
+              <img
+                src="c:\Users\USER\OneDrive\Pictures\Screenshots\Rakesh.profile.jpg"
+                alt="Illustrated portrait of Rakesh Tiwari coding at his desk with RouteHire whiteboard and G.H. Raisoni campus"
+                onerror="document.getElementById('avatarFrame').classList.add('img-error')"
+              />
+              <!-- Crisp Illustrated Fallback Badge -->
+              <div class="avatar-fallback" aria-label="Developer Desk Illustration Summary">
+                <div style="font-size:2.5rem; margin-bottom:0.5rem;">👨‍💻♛</div>
+                <div style="font-family:var(--font-display); font-weight:700; font-size:1.1rem; color:var(--amber);">
+                  Rakesh Tiwari • Desk Mode
+                </div>
+                <p style="font-size:0.82rem; color:var(--text-secondary); margin-top:0.35rem;">
+                  G.H. Raisoni College of Engineering, Nagpur • B.Tech CSE (AI &amp; DS)
+                </p>
+              </div>
+              <div class="avatar-caption-badge">
+                <span>📍 Nagpur • B.Tech CSE</span>
+                <span style="color:var(--amber);">Just One More Commit</span>
+              </div>
+            </div>
+
+            <!-- Pinned Whiteboard Card -->
+            <div class="whiteboard-pin">
+              <div class="wb-header">
+                <span>💡 CURRENTLY BUILDING</span>
+                <span>MERN STACK</span>
+              </div>
+              <div class="wb-title">RouteHire Recruitment Platform</div>
+              <div class="wb-roles">
+                <span>🚌 Driver</span>
+                <span>🏢 Operator</span>
+                <span>🛡️ Admin</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Yellow Sticky-Note Goals Checklist -->
+          <aside class="sticky-note" aria-label="Developer Goals Sticky Note">
+            <div class="sticky-title">📌 3rd Year &amp; Career Goals</div>
+            <ul class="sticky-list">
+              <li>☑ 3rd Year CSE Milestone</li>
+              <li>☑ Placement Ready (Full-Stack / AI)</li>
+              <li>☑ Build Real-World Projects</li>
+              <li>☑ Financial Freedom &amp; Family Proud</li>
+            </ul>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. FEATURED PROJECTS SHOWCASE -->
+    <section id="projects">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <span class="eyebrow">01 // Engineering Portfolio</span>
+            <h2 class="section-title">Featured Projects</h2>
+          </div>
+
+          <div class="filter-tabs" role="tablist" aria-label="Project Category Filters">
+            <button class="tab-btn active" data-project-filter="all">All (3)</button>
+            <button class="tab-btn" data-project-filter="fullstack">Full-Stack</button>
+            <button class="tab-btn" data-project-filter="aiml">AI / ML</button>
+          </div>
+        </div>
+
+        <div class="projects-bento">
+          <!-- Flagship Project: RouteHire Recruitment Platform -->
+          <article class="bento-card project-card flagship" data-category="fullstack">
+            <div>
+              <div class="project-meta-top">
+                <span class="flagship-pill">★ FLAGSHIP PROJECT</span>
+                <span class="cat-pill">Full-Stack Web Platform</span>
+              </div>
+
+              <h3 class="project-title">RouteHire Recruitment Platform</h3>
+              <p class="project-desc">
+                End-to-end web recruitment platform connecting bus operators with verified drivers. Engineered role-based dashboards and automated hiring pipelines to digitize transport staffing.
+              </p>
+
+              <div class="feature-highlights">
+                <div class="feature-chip"><span>✓</span> Driver &amp; Operator Registration</div>
+                <div class="feature-chip"><span>✓</span> Job Postings &amp; Driver Search</div>
+                <div class="feature-chip"><span>✓</span> Document Verification &amp; Admin Approval</div>
+                <div class="feature-chip"><span>✓</span> Role-Based Dashboards (Driver / Operator / Admin)</div>
+              </div>
+            </div>
+
+            <div>
+              <div class="stack-row">
+                <span class="stack-tag">HTML5</span>
+                <span class="stack-tag">CSS3</span>
+                <span class="stack-tag">JavaScript</span>
+                <span class="stack-tag">Node.js</span>
+                <span class="stack-tag">Express.js</span>
+                <span class="stack-tag">MongoDB</span>
+              </div>
+
+              <div class="project-actions">
+                <button
+                  type="button"
+                  class="detail-btn open-modal-btn"
+                  data-title="RouteHire Recruitment Platform"
+                  data-category="Flagship Full-Stack Application"
+                  data-stack="HTML5, CSS3, JavaScript, Node.js, Express.js, MongoDB"
+                  data-summary="A full-stack recruitment platform tailored for the bus transport industry to connect fleet operators with qualified commercial drivers."
+                  data-bullets="Implemented secure registration and profile onboarding for both drivers and bus operators.|Built job posting workflows, searchable driver directories, and application tracking.|Engineered document verification queues with administrative approval controls.|Designed dedicated role-based dashboards for Drivers, Operators, and Administrators."
+                >
+                  <span>Inspect Architecture</span>
+                  <span>→</span>
+                </button>
+                <a href="https://github.com/rtiwari0410" target="_blank" rel="noopener noreferrer" class="gh-link">
+                  GitHub Repository ↗
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Project 2: TrackIt Lost & Found Website -->
+          <article class="bento-card project-card" data-category="fullstack">
+            <div>
+              <div class="project-meta-top">
+                <span class="cat-pill">Full-Stack • Real-Time</span>
+              </div>
+              <h3 class="project-title">Track-It Lost &amp; Found Website</h3>
+              <p class="project-desc">
+                Campus-wide Lost &amp; Found web application streamlining item reporting, status management, and peer-to-peer recovery using Firebase real-time database integration.
+              </p>
+            </div>
+
+            <div>
+              <div class="stack-row">
+                <span class="stack-tag">HTML5</span>
+                <span class="stack-tag">CSS3</span>
+                <span class="stack-tag">JavaScript</span>
+                <span class="stack-tag">Node.js</span>
+                <span class="stack-tag">Firebase</span>
+              </div>
+
+              <div class="project-actions">
+                <button
+                  type="button"
+                  class="detail-btn open-modal-btn"
+                  data-title="TrackIt — Campus Lost & Found Platform"
+                  data-category="Full-Stack Cloud Web App"
+                  data-stack="HTML5, CSS3, JavaScript, Node.js, Firebase Realtime Database"
+                  data-summary="A responsive campus utility platform built to help students and staff report, search, and recover misplaced belongings rapidly."
+                  data-bullets="Built structured reporting forms for both lost and found campus items.|Integrated Firebase real-time database for instant listing updates and status tracking.|Designed a clean, mobile-friendly UI to simplify claimant verification and recovery."
+                >
+                  <span>Inspect Architecture</span>
+                  <span>→</span>
+                </button>
+                <a href="https://github.com/rtiwari0410" target="_blank" rel="noopener noreferrer" class="gh-link">
+                  GitHub ↗
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Project 3: Resume Analyzer AI -->
+          <article class="bento-card project-card" data-category="aiml">
+            <div>
+              <div class="project-meta-top">
+                <span class="cat-pill">AI / NLP / ML</span>
+              </div>
+              <h3 class="project-title">Resume Analyzer AI</h3>
+              <p class="project-desc">
+                AI-powered resume screening and optimization tool utilizing Python, Natural Language Processing (NLP), Machine Learning, and Streamlit to automate candidate evaluation.
+              </p>
+            </div>
+
+            <div>
+              <div class="stack-row">
+                <span class="stack-tag">Python</span>
+                <span class="stack-tag">NLP</span>
+                <span class="stack-tag">Machine Learning</span>
+                <span class="stack-tag">Scikit-Learn</span>
+                <span class="stack-tag">Streamlit</span>
+              </div>
+
+              <div class="project-actions">
+                <button
+                  type="button"
+                  class="detail-btn open-modal-btn"
+                  data-title="Resume Analyzer AI"
+                  data-category="Artificial Intelligence & NLP"
+                  data-stack="Python, NLP, Machine Learning, Pandas, Streamlit"
+                  data-summary="An intelligent resume parsing and scoring application that extracts key skills, evaluates role alignment, and recommends actionable improvements."
+                  data-bullets="Automated text extraction and keyword parsing using Natural Language Processing.|Applied ML classification and similarity scoring to benchmark resumes against role requirements.|Deployed an interactive Streamlit interface for instant candidate feedback."
+                >
+                  <span>Inspect Architecture</span>
+                  <span>→</span>
+                </button>
+                <a href="https://github.com/rtiwari0410" target="_blank" rel="noopener noreferrer" class="gh-link">
+                  GitHub ↗
+                </a>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. INTERACTIVE TECHNICAL SKILLS MATRIX -->
+    <section id="skills">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <span class="eyebrow">02 // Chalkboard Matrix</span>
+            <h2 class="section-title">Technical Skills</h2>
+          </div>
+
+          <div class="filter-tabs" role="tablist" aria-label="Skill Category Filters">
+            <button class="tab-btn skill-tab active" data-skill-filter="all">All (4)</button>
+            <button class="tab-btn skill-tab" data-skill-filter="core">Core</button>
+            <button class="tab-btn skill-tab" data-skill-filter="languages">Languages</button>
+            <button class="tab-btn skill-tab" data-skill-filter="frameworks">Frameworks</button>
+            <button class="tab-btn skill-tab" data-skill-filter="dbtools">DB &amp; Tools</button>
+          </div>
+        </div>
+
+        <div class="skills-bento">
+          <!-- Core Competencies -->
+          <div class="bento-card skill-box" data-skill-cat="core">
+            <div class="skill-box-head">
+              <span class="skill-box-icon">⚡</span>
+              <h3>Core Competencies</h3>
+            </div>
+            <div class="skill-chips">
+              <span class="skill-chip">Full-Stack Web Development</span>
+              <span class="skill-chip">Data Structures &amp; Algorithms (DSA)</span>
+              <span class="skill-chip">OOP</span>
+              <span class="skill-chip">Artificial Intelligence</span>
+              <span class="skill-chip">Machine Learning</span>
+              <span class="skill-chip">NLP</span>
+              <span class="skill-chip">Deep Learning (CNN)</span>
+              <span class="skill-chip">DBMS</span>
+              <span class="skill-chip">Operating Systems</span>
+              <span class="skill-chip">Cybersecurity Principles</span>
+              <span class="skill-chip">System Design Fundamentals</span>
+            </div>
+          </div>
+
+          <!-- Languages -->
+          <div class="bento-card skill-box" data-skill-cat="languages">
+            <div class="skill-box-head">
+              <span class="skill-box-icon">&lt;/&gt;</span>
+              <h3>Programming Languages</h3>
+            </div>
+            <div class="skill-chips">
+              <span class="skill-chip">Python</span>
+              <span class="skill-chip">Java</span>
+              <span class="skill-chip">C++</span>
+              <span class="skill-chip">C</span>
+              <span class="skill-chip">JavaScript</span>
+              <span class="skill-chip">SQL</span>
+            </div>
+          </div>
+
+          <!-- AI/ML & Web Frameworks -->
+          <div class="bento-card skill-box" data-skill-cat="frameworks">
+            <div class="skill-box-head">
+              <span class="skill-box-icon">🧠</span>
+              <h3>AI/ML &amp; Web Frameworks</h3>
+            </div>
+            <div class="skill-chips">
+              <span class="skill-chip">TensorFlow</span>
+              <span class="skill-chip">Keras</span>
+              <span class="skill-chip">Pandas</span>
+              <span class="skill-chip">NumPy</span>
+              <span class="skill-chip">Scikit-Learn</span>
+              <span class="skill-chip">Streamlit</span>
+              <span class="skill-chip">Node.js</span>
+              <span class="skill-chip">Express.js</span>
+              <span class="skill-chip">React.js</span>
+            </div>
+          </div>
+
+          <!-- Databases & Tools -->
+          <div class="bento-card skill-box" data-skill-cat="dbtools">
+            <div class="skill-box-head">
+              <span class="skill-box-icon">🗄️</span>
+              <h3>Databases &amp; Developer Tools</h3>
+            </div>
+            <div class="skill-chips">
+              <span class="skill-chip">MongoDB</span>
+              <span class="skill-chip">Firebase</span>
+              <span class="skill-chip">MySQL</span>
+              <span class="skill-chip">Git</span>
+              <span class="skill-chip">GitHub</span>
+              <span class="skill-chip">VS Code</span>
+              <span class="skill-chip">Jupyter Notebook</span>
+              <span class="skill-chip">MS Excel (Advanced)</span>
+              <span class="skill-chip">Tally ERP (with GST)</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. EXPERIENCE, EDUCATION & BEYOND CODE BENTO -->
+    <section id="experience">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <span class="eyebrow">03 // Journey &amp; Leadership</span>
+            <h2 class="section-title">Experience, Education &amp; Beyond Code</h2>
+          </div>
+        </div>
+
+        <div class="career-bento">
+          <!-- Work Experience Card -->
+          <div class="bento-card">
+            <span class="eyebrow">Work Experience</span>
+            <div class="exp-top">
+              <div>
+                <h3 class="exp-role">Senior Bus Manager</h3>
+                <p class="exp-org">IntrCity Smart Bus • Nagpur Region</p>
+              </div>
+              <span class="date-badge">Aug 2024 – Oct 2026</span>
+            </div>
+
+            <ul class="bullet-list">
+              <li>Managed regional operations across Nagpur, monitoring Net Promoter Score (NPS), customer ratings, and route performance analytics.</li>
+              <li>Led a team of 20 Captains by assigning daily duties, tracking performance KPIs, and maintaining high service frequency.</li>
+              <li>Resolved real-time operational bottlenecks, elevated customer satisfaction, and drove sustained regional revenue growth.</li>
+            </ul>
+          </div>
+
+          <!-- Education Timeline Card -->
+          <div class="bento-card">
+            <span class="eyebrow">Academic Timeline</span>
+            <div class="edu-timeline">
+              <div class="edu-item">
+                <div class="edu-row">
+                  <div class="edu-title">B.Tech CSE (AI &amp; Data Science)</div>
+                  <span class="edu-score">2023 – 2028</span>
+                </div>
+                <div class="edu-sub">G.H. Raisoni Institute of Engineering, Nagpur</div>
+              </div>
+
+              <div class="edu-item">
+                <div class="edu-row">
+                  <div class="edu-title">HSC (State Board)</div>
+                  <span class="edu-score">60%</span>
+                </div>
+                <div class="edu-sub">Priya Vidiya Vihar English School, Nagpur</div>
+              </div>
+
+              <div class="edu-item">
+                <div class="edu-row">
+                  <div class="edu-title">SSC</div>
+                  <span class="edu-score">80%</span>
+                </div>
+                <div class="edu-sub">Priya Vidiya Vihar English School, Nagpur</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Sub-Bento: Achievements & Beyond Code Book Stack -->
+        <div class="sub-bento-grid">
+          <div class="bento-card">
+            <span class="eyebrow">Achievements &amp; Certifications</span>
+            <div class="ach-grid">
+              <div class="ach-row">
+                <span class="ach-badge-icon">🏆</span>
+                <div>
+                  <strong>Project Representative — VNIT Hackathon</strong>
+                  <p style="font-size:0.86rem; color:var(--text-secondary);">
+                    Represented project architecture and technical execution at the prestigious VNIT Hackathon; mentored peers on problem-solving and time management.
+                  </p>
+                </div>
+              </div>
+
+              <div class="ach-row">
+                <span class="ach-badge-icon">📜</span>
+                <div>
+                  <strong>Tally ERP with GST &amp; Advanced MS Excel</strong>
+                  <p style="font-size:0.86rem; color:var(--text-secondary);">
+                    Certified in financial ERP workflows, GST compliance, and advanced spreadsheet data modeling.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Beyond Code / Book Stack Interests -->
+          <div class="bento-card">
+            <span class="eyebrow">Beyond Code // Book Stack</span>
+            <h3 style="font-family:var(--font-display); font-size:1.15rem; font-weight:700;">Life Outside the Terminal</h3>
+            <div class="interests-grid">
+              <div class="interest-pill">🌍 Travel</div>
+              <div class="interest-pill">🧭 Explore</div>
+              <div class="interest-pill">📷 Photography</div>
+              <div class="interest-pill">🎵 Music</div>
+              <div class="interest-pill">🍜 Food</div>
+              <div class="interest-pill">🏔️ Adventure</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. CONTACT & INTERACTIVE MESSAGE PREVIEW -->
+    <section id="contact">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <span class="eyebrow">04 // Let's Connect</span>
+            <h2 class="section-title">Get In Touch</h2>
+          </div>
+        </div>
+
+        <div class="contact-bento">
+          <!-- Direct Channels -->
+          <div class="bento-card">
+            <h3 style="font-family:var(--font-display); font-size:1.3rem; margin-bottom:0.5rem;">Direct Contact Channels</h3>
+            <p style="color:var(--text-secondary); font-size:0.93rem;">
+              Available for Full-Stack Software Engineering and AI/ML internships or roles. Reach out directly or copy my email in one click.
+            </p>
+
+            <div class="contact-links-grid">
+              <div class="contact-tile">
+                <div>
+                  <span class="tile-label">Email</span>
+                  <span class="tile-val"><rakesh class="rakesh.tiwari0410"></rakesh>rakesh.tiwari0410@gmail.com</span>
+                </div>
+                <button id="contactCopyEmail" type="button" class="mini-btn">Copy</button>
+              </div>
+
+              <div class="contact-tile">
+                <div>
+                  <span class="tile-label">Phone</span>
+                  <span class="tile-val">+91 9766922799</span>
+                </div>
+                <a href="tel:+919766922799" class="mini-btn">Call</a>
+              </div>
+
+              <div class="contact-tile">
+                <div>
+                  <span class="tile-label">GitHub</span>
+                  <span class="tile-val">github.com/rtiwari0410</span>
+                </div>
+                <a href="https://github.com/rtiwari0410" target="_blank" rel="noopener noreferrer" class="mini-btn">Open ↗</a>
+              </div>
+
+              <div class="contact-tile">
+                <div>
+                  <span class="tile-label">LinkedIn</span>
+                  <span class="tile-val">linkedin.com/in/rakesh-tiwari</span>
+                </div>
+                <a href="https://www.linkedin.com/in/rakesh-tiwari-1a092833a " target="_blank" rel="noopener noreferrer" class="mini-btn">Connect ↗</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Interactive Contact Message Preview Form -->
+          <div class="bento-card">
+            <h3 style="font-family:var(--font-display); font-size:1.3rem; margin-bottom:0.5rem;">Quick Message Composer</h3>
+            <p style="color:var(--text-secondary); font-size:0.9rem; margin-bottom:1rem;">
+              Draft a note below to preview your formatted message and launch your email client directly.
+            </p>
+
+            <form id="contactForm" class="contact-form">
+              <div class="form-group">
+                <label class="form-label" for="senderName">Your Name</label>
+                <input id="senderName" class="form-input" type="text" placeholder="e.g., Rakesh Tiwari" required />
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="senderSubject">Opportunity / Subject</label>
+                <input id="senderSubject" class="form-input" type="text" placeholder="e.g., Full-Stack / AI-ML Engineer Role" required />
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="senderMessage">Message</label>
+                <textarea id="senderMessage" class="form-textarea" rows="3" placeholder="Hi Rakesh, I came across your RouteHire and AI projects..." required></textarea>
+              </div>
+
+              <div style="display:flex; flex-wrap:wrap; gap:0.65rem;">
+                <button type="submit" class="btn btn-amber">Preview &amp; Prepare Email</button>
+                <a id="mailtoLaunch" href="mailto:rakesh.tiwari0410@gmail.com" class="btn btn-outline" style="display:none;">Open Mail Client ↗</a>
+              </div>
+
+              <div id="messagePreview" class="preview-box" aria-live="polite"></div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>&copy; <span id="year"></span> Rakesh Tiwari • Nagpur, Maharashtra • Build &gt; Learn &gt; Deploy</p>
+    </div>
+  </footer>
+
+  <!-- Interactive Project Detail Modal -->
+  <div id="projectModal" class="modal-backdrop" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="modal-panel">
+      <button id="closeModalBtn" class="modal-close" aria-label="Close modal">✕</button>
+      <span id="modalCategory" class="eyebrow">Project Details</span>
+      <h3 id="modalTitle" style="font-family:var(--font-display); font-size:1.5rem; margin-bottom:0.65rem;"></h3>
+      <p id="modalSummary" style="color:var(--text-secondary); font-size:0.95rem; margin-bottom:1rem;"></p>
+      <div id="modalStack" class="stack-row" style="margin-bottom:1rem;"></div>
+      <ul id="modalBullets" class="bullet-list" style="margin-bottom:1.5rem;"></ul>
+      <div style="display:flex; justify-content:flex-end; gap:0.75rem;">
+        <a href="https://github.com/rtiwari0410" target="_blank" rel="noopener noreferrer" class="btn btn-amber">View on GitHub ↗</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification -->
+  <div id="toast" class="toast" role="status" aria-live="polite">
+    <span style="color:var(--emerald);">✔</span>
+    <span id="toastText">Copied to clipboard!</span>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // 1. Current Year
+      document.getElementById('year').textContent = new Date().getFullYear();
+
+      // 2. Theme Toggle (Chalkboard Dark / Studio Light)
+      const htmlEl = document.documentElement;
+      const themeToggle = document.getElementById('themeToggle');
+      const sunIcon = document.getElementById('sunIcon');
+      const moonIcon = document.getElementById('moonIcon');
+
+      function setTheme(theme) {
+        htmlEl.setAttribute('data-theme', theme);
+        localStorage.setItem('rakesh-bento-theme', theme);
+        sunIcon.style.display = theme === 'dark' ? 'block' : 'none';
+        moonIcon.style.display = theme === 'light' ? 'block' : 'none';
+      }
+
+      setTheme(localStorage.getItem('rakesh-bento-theme') || 'dark');
+
+      themeToggle.addEventListener('click', () => {
+        setTheme(htmlEl.getAttribute('data-theme') === 'dark' ? 'light' : 'dark');
+      });
+
+      // 3. Mobile Drawer
+      const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+      const mobileDrawer = document.getElementById('mobileDrawer');
+
+      mobileMenuBtn.addEventListener('click', () => {
+        const open = mobileDrawer.classList.toggle('open');
+        mobileMenuBtn.setAttribute('aria-expanded', String(open));
+      });
+
+      mobileDrawer.querySelectorAll('a').forEach(a => {
+        a.addEventListener('click', () => {
+          mobileDrawer.classList.remove('open');
+          mobileMenuBtn.setAttribute('aria-expanded', 'false');
+        });
+      });
+
+      // 4. Toast & Copy Email Utility
+      const toast = document.getElementById('toast');
+      const toastText = document.getElementById('toastText');
+      let toastTimer;
+
+      function showToast(msg) {
+        toastText.textContent = msg;
+        toast.classList.add('show');
+        clearTimeout(toastTimer);
+        toastTimer = setTimeout(() => toast.classList.remove('show'), 2600);
+      }
+
+      function copyEmail() {
+        const email = 'rakesh.tiwari0410@gmail.com';
+        const input = document.createElement('input');
+        input.value = email;
+        document.body.appendChild(input);
+        input.select();
+        try {
+          document.execCommand('copy');
+          showToast('Copied: ' + email);
+        } catch (e) {
+          showToast(email);
+        }
+        document.body.removeChild(input);
+      }
+
+      document.getElementById('heroCopyEmail').addEventListener('click', copyEmail);
+      document.getElementById('contactCopyEmail').addEventListener('click', copyEmail);
+
+      // 5. Project Filter Tabs
+      const projBtns = document.querySelectorAll('[data-project-filter]');
+      const projCards = document.querySelectorAll('.project-card');
+
+      projBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          projBtns.forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          const filter = btn.getAttribute('data-project-filter');
+
+          projCards.forEach(card => {
+            const cat = card.getAttribute('data-category');
+            card.classList.toggle('hidden', filter !== 'all' && cat !== filter);
+          });
+        });
+      });
+
+      // 6. Skill Filter Tabs
+      const skillBtns = document.querySelectorAll('[data-skill-filter]');
+      const skillBoxes = document.querySelectorAll('.skill-box');
+
+      skillBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          skillBtns.forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          const filter = btn.getAttribute('data-skill-filter');
+
+          skillBoxes.forEach(box => {
+            const cat = box.getAttribute('data-skill-cat');
+            box.classList.toggle('hidden', filter !== 'all' && cat !== filter);
+          });
+        });
+      });
+
+      // 7. Interactive Project Detail Modal
+      const modal = document.getElementById('projectModal');
+      const closeModalBtn = document.getElementById('closeModalBtn');
+
+      document.querySelectorAll('.open-modal-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          document.getElementById('modalTitle').textContent = btn.dataset.title;
+          document.getElementById('modalCategory').textContent = btn.dataset.category;
+          document.getElementById('modalSummary').textContent = btn.dataset.summary;
+
+          const stackEl = document.getElementById('modalStack');
+          stackEl.innerHTML = '';
+          btn.dataset.stack.split(',').forEach(tech => {
+            const span = document.createElement('span');
+            span.className = 'stack-tag';
+            span.textContent = tech.trim();
+            stackEl.appendChild(span);
+          });
+
+          const bulletsEl = document.getElementById('modalBullets');
+          bulletsEl.innerHTML = '';
+          btn.dataset.bullets.split('|').forEach(item => {
+            const li = document.createElement('li');
+            li.textContent = item.trim();
+            bulletsEl.appendChild(li);
+          });
+
+          modal.classList.add('open');
+        });
+      });
+
+      closeModalBtn.addEventListener('click', () => modal.classList.remove('open'));
+      modal.addEventListener('click', e => {
+        if (e.target === modal) modal.classList.remove('open');
+      });
+
+      // 8. Interactive Contact Message Preview Form
+      const contactForm = document.getElementById('contactForm');
+      const messagePreview = document.getElementById('messagePreview');
+      const mailtoLaunch = document.getElementById('mailtoLaunch');
+
+      contactForm.addEventListener('submit', e => {
+        e.preventDefault();
+        const name = document.getElementById('senderName').value.trim();
+        const subject = document.getElementById('senderSubject').value.trim();
+        const message = document.getElementById('senderMessage').value.trim();
+
+        const bodyText = `Hi Rakesh,\n\n${message}\n\nBest regards,\n${name}`;
+        mailtoLaunch.href = `mailto:rtiwari07320@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(bodyText)}`;
+        mailtoLaunch.style.display = 'inline-flex';
+
+        messagePreview.innerHTML = `
+          <div style="color:var(--emerald); font-weight:700; margin-bottom:0.35rem;">✔ Formatted Email Preview Ready:</div>
+          <div><strong>To:</strong> rakesh.tiwari0410@gmail.com</div>
+          <div><strong>Subject:</strong> ${subject}</div>
+          <div style="margin-top:0.4rem; white-space:pre-line; color:var(--text-secondary);">${bodyText}</div>
+        `;
+        messagePreview.classList.add('active');
+        showToast('Message preview generated!');
+      });
+
+      // 9. Active Nav Highlight on Scroll
+      const sections = document.querySelectorAll('main section[id]');
+      const navLinks = document.querySelectorAll('.nav-link');
+
+      window.addEventListener('scroll', () => {
+        let current = '';
+        sections.forEach(sec => {
+          if (window.scrollY >= sec.offsetTop - 140) {
+            current = sec.getAttribute('id');
+          }
+        });
+        navLinks.forEach(link => {
+          link.classList.toggle('active', link.getAttribute('href') === '#' + current);
+        });
+      }, { passive: true });
+    });
+  </script>
+</body>
+</html>
